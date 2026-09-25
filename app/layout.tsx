@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./marketplace.css";
+import "./collaborations.css";
 
 export const metadata: Metadata = {
   title: "Endorse — Your brand. Their creativity. A perfect match.",

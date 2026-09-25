@@ -12,6 +12,9 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/.pytest_cache/
 
 # next.js
 /.next/
@@ -20,7 +23,21 @@
 
 # misc
 .DS_Store
+Thumbs.db
+Desktop.ini
 *.pem
+*.key
+*.p12
+*.pfx
+*.log
+__pycache__/
+*.py[cod]
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-wal
+*.sqlite3-shm
 
 # debug
 npm-debug.log*
@@ -30,6 +47,10 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+!.env.sample
+.dev.vars*
+!.dev.vars.example
 
 # vercel
 .vercel
@@ -44,4 +65,8 @@ next-env.d.ts
 /.codex/
 /outputs/
 /work/
+/tmp/
+/temp/
+/.vscode/
+/.idea/
 *.tsbuildinfo

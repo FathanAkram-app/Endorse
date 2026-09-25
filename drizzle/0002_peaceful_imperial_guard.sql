@@ -1,0 +1,1 @@
+ALTER TABLE `profiles` ADD `social_accounts` text DEFAULT '[]' NOT NULL;

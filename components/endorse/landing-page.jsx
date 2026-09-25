@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Brand from './brand';
+import AccountNav from './account-nav';
 import CreatorCard from './creator-card';
 import { creators, companies } from '@/lib/endorse/data';
 import { discoverCreators } from '@/lib/endorse/discovery';
@@ -14,8 +15,8 @@ import { useDiscoveryTools } from './use-discovery-tools';
 
 const categories = ['All creators', 'Lifestyle', 'Beauty', 'Travel'];
 
-export default function LandingPage() {
-  const [tab, setTab] = useState('creators');
+export default function LandingPage({ initialTab = 'creators' }) {
+  const [tab, setTab] = useState(initialTab);
   const [category, setCategory] = useState('All creators');
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState('recommended');
@@ -30,8 +31,7 @@ export default function LandingPage() {
   const visibleCompanies = companies.filter((item) => `${item.name} ${item.category} ${item.description}`.toLowerCase().includes(query.trim().toLowerCase()));
 
   function explore(kind) {
-    setTab(kind); setQuery(''); setMenuOpen(false);
-    document.getElementById('discover')?.scrollIntoView({ behavior: 'smooth' });
+    window.location.assign(kind === 'companies' ? '/explore?kind=brands' : '/explore');
   }
   function toggleCompare(id) {
     setSelected((previous) => previous.includes(id) ? previous.filter((item) => item !== id) : [...previous, id]);
@@ -42,9 +42,9 @@ export default function LandingPage() {
     <header className="site-header"><div className="container header-inner">
       <Brand />
       <nav className={`main-nav ${menuOpen ? 'menu-open' : ''}`} aria-label="Main navigation">
-        <button onClick={() => explore('creators')}>Find creators</button><button onClick={() => explore('companies')}>Explore brands</button><a href="#how-it-works" onClick={() => setMenuOpen(false)}>How it works</a>
+        <button onClick={() => explore('creators')}>Explore creators</button><button onClick={() => explore('companies')}>Explore brands</button><a href="#how-it-works" onClick={() => setMenuOpen(false)}>How it works</a>
       </nav>
-      <button className="button button-dark header-cta" onClick={() => explore('companies')}>I’m a creator <ArrowUpRight size={16} /></button>
+      <AccountNav />
       <button className="mobile-menu" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
     </div></header>
     <main id="main">
@@ -84,8 +84,8 @@ export default function LandingPage() {
 
     {selected.length > 0 && <div className="compare-bar" role="region" aria-label="Selected creators"><div><GitCompareArrows size={20} /><span><strong>{selected.length} creator{selected.length > 1 ? 's' : ''}</strong> selected</span></div><button className="button button-primary" disabled={selected.length < 2} onClick={() => setComparisonOpen(true)}>Compare {selected.length < 2 ? '(select 2+)' : 'now'} <ArrowRight size={16} /></button><button className="clear-selection" onClick={() => setSelected([])} aria-label="Clear comparison"><X size={19} /></button></div>}
     <Dialog open={comparisonOpen} onOpenChange={setComparisonOpen}><DialogContent className="comparison-dialog"><DialogHeader><DialogTitle>Find the right fit.</DialogTitle><DialogDescription>Compare sample creators for the same deliverable: one 30–60 second Instagram Reel. All rates are illustrative, in USD.</DialogDescription></DialogHeader><Table><TableHeader><TableRow><TableHead>What matters to you</TableHead>{compared.map((item) => <TableHead key={item.id}>{item.name}</TableHead>)}</TableRow></TableHeader><TableBody>{[['Starting price', (item) => `$${item.price}`], ['Experience', (item) => item.tier], ['Category', (item) => item.category], ['Followers', (item) => item.followers], ['Engagement rate', (item) => item.engagement], ['Rating', (item) => `${item.rating.toFixed(1)} / 5 (${item.reviews} reviews)`], ['Turnaround', (item) => item.turnaround]].map(([label, value]) => <TableRow key={label}><TableCell>{label}</TableCell>{compared.map((item) => <TableCell key={item.id}>{value(item)}</TableCell>)}</TableRow>)}</TableBody></Table><p className="modal-note">Follower count and engagement are examples, not guarantees of campaign results.</p></DialogContent></Dialog>
-    <Dialog open={!!profile} onOpenChange={(open) => !open && setProfile(null)}><DialogContent className="profile-dialog">{profile && <><DialogHeader><DialogTitle>{profile.name}</DialogTitle><DialogDescription>{profile.handle} · {profile.location}</DialogDescription></DialogHeader><div className="profile-intro"><img src={profile.image} alt={profile.name} /><div><span className="profile-category">{profile.category} · {profile.tier}</span><p>{profile.description}</p></div></div><div className="profile-package"><span>Sample content package</span><h3>{profile.deliverable}</h3><p>From <strong>${profile.price} USD</strong> · {profile.turnaround} turnaround</p></div><button className="button button-primary" onClick={() => toggleCompare(profile.id)}>{selected.includes(profile.id) ? <Check size={18} /> : <GitCompareArrows size={18} />}{selected.includes(profile.id) ? 'Added to comparison' : 'Add to comparison'}</button><p className="modal-note">This is a demonstration profile. Live registration and booking are not available yet.</p></>}</DialogContent></Dialog>
-    <Dialog open={!!company} onOpenChange={(open) => !open && setCompany(null)}><DialogContent>{company && <><DialogHeader><DialogTitle>{company.name}</DialogTitle><DialogDescription>{company.category} · Sample brand opportunity</DialogDescription></DialogHeader><h3>{company.title}</h3><p>{company.description}</p><div className="profile-package"><span>Campaign budget</span><h3>{company.budget} USD</h3><p>Deliverable: one 30–60 second Instagram Reel.</p></div><p className="modal-note">This is an illustrative opportunity. Live company registration, applications, and messaging will be available when the marketplace is connected.</p></>}</DialogContent></Dialog>
+    <Dialog open={!!profile} onOpenChange={(open) => !open && setProfile(null)}><DialogContent className="profile-dialog">{profile && <><DialogHeader><DialogTitle>{profile.name}</DialogTitle><DialogDescription>{profile.handle} · {profile.location}</DialogDescription></DialogHeader><div className="profile-intro"><img src={profile.image} alt={profile.name} /><div><span className="profile-category">{profile.category} · {profile.tier}</span><p>{profile.description}</p></div></div><div className="profile-package"><span>Sample content package</span><h3>{profile.deliverable}</h3><p>From <strong>${profile.price} USD</strong> · {profile.turnaround} turnaround</p></div><button className="button button-primary" onClick={() => toggleCompare(profile.id)}>{selected.includes(profile.id) ? <Check size={18} /> : <GitCompareArrows size={18} />}{selected.includes(profile.id) ? 'Added to comparison' : 'Add to comparison'}</button><p className="modal-note">This is a demonstration profile. Booking is not available yet.</p></>}</DialogContent></Dialog>
+    <Dialog open={!!company} onOpenChange={(open) => !open && setCompany(null)}><DialogContent>{company && <><DialogHeader><DialogTitle>{company.name}</DialogTitle><DialogDescription>{company.category} · Sample brand opportunity</DialogDescription></DialogHeader><h3>{company.title}</h3><p>{company.description}</p><div className="profile-package"><span>Campaign budget</span><h3>{company.budget} USD</h3><p>Deliverable: one 30–60 second Instagram Reel.</p></div><p className="modal-note">This is an illustrative opportunity. Applications and messaging are not available yet.</p></>}</DialogContent></Dialog>
   </>;
 }
 

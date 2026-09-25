@@ -1,0 +1,104 @@
+.marketplace-header nav { display:flex; gap:22px; }
+.collaboration-start { max-width:800px; }
+.collaboration-start .button { align-self:flex-start; }
+.profile-contact { margin-top:32px; }
+.profile-contact p { margin-top:12px; color:#756580; font-size:14px; }
+.public-reviews { margin-top:38px; border-top:1px solid #e8e0ef; padding-top:28px; }
+.public-reviews h2 { font-size:23px; margin-bottom:18px; }
+.public-reviews h2 span { display:block; font-size:14px; font-weight:500; color:#8050b5; margin-top:10px; }
+.public-reviews>p { font-size:15px; color:#756580; }
+.collaboration-list { border:1px solid #e8e0ef; border-radius:16px; overflow:hidden; }
+.collaboration-row { display:flex; align-items:center; gap:20px; padding:25px; border-bottom:1px solid #eee7f4; background:#fff; }
+.collaboration-row:last-child { border-bottom:0; }
+.collaboration-row:hover { background:#fcfaff; }
+.collaboration-row>div:nth-child(2) { flex:1; min-width:0; }
+.collaboration-row h2 { font-size:20px; letter-spacing:-.4px; overflow-wrap:anywhere; }
+.collaboration-row p { font-size:14px; color:#81728c; margin-top:7px; }
+.collaboration-avatar { display:grid; place-items:center; height:50px; width:50px; border-radius:15px; background:#eee3fb; color:#8050b5; font-weight:650; flex-shrink:0; }
+.collaboration-workspace .workspace-heading h1 { font-size:clamp(28px,3.5vw,40px); overflow-wrap:anywhere; }
+.collaboration-workspace .workspace-heading>.publication-badge { margin-top:18px; }
+.collaboration-steps { display:grid; grid-template-columns:repeat(5,1fr); margin-bottom:30px; border:1px solid #e8e0ef; border-radius:14px; overflow:hidden; background:#fcfaff; }
+.collaboration-steps li { display:flex; align-items:center; gap:10px; padding:17px; font-size:14px; font-weight:550; color:#887793; }
+.collaboration-steps li>span { display:grid; place-items:center; width:25px; height:25px; border:1px solid #dfd4e8; border-radius:50%; flex-shrink:0; font-size:12px; }
+.collaboration-steps .current { color:#704098; background:#efe4fb; }
+.collaboration-steps .current>span { color:white; background:#8050b5; border-color:#8050b5; }
+.collaboration-steps .done { color:#426650; }
+.collaboration-steps .done>span { border-color:#d3e7d9; background:#eff8f2; }
+.collaboration-grid { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:25px; align-items:start; }
+.conversation-panel,.contract-panel { border:1px solid #e8e0ef; border-radius:16px; background:white; min-width:0; overflow:hidden; }
+.panel-heading { border-bottom:1px solid #eee7f4; padding:23px; display:flex; align-items:center; gap:12px; justify-content:space-between; }
+.panel-heading h2 { display:flex; align-items:center; gap:9px; font-size:19px; font-weight:650; }
+.panel-heading>span { color:#887793; font-size:11px; }
+.panel-heading .live-connection { display:inline-flex; align-items:center; gap:6px; }
+.live-connection i { width:7px; height:7px; border-radius:50%; background:#ae8031; }
+.live-connection.connected { color:#426650; }
+.live-connection.connected i { background:#408558; }
+.message-history { max-height:640px; min-height:280px; overflow-y:auto; padding:22px; display:flex; flex-direction:column; gap:18px; }
+.chat-message { border-radius:12px; padding:16px; background:#f8f5fb; width:92%; align-self:flex-start; }
+.chat-own { align-self:flex-end; background:#eee3fb; }
+.chat-message>div { display:flex; flex-direction:column; gap:4px; font-size:12px; }
+.chat-message strong { font-weight:650; }
+.chat-message time { font-size:10px; color:#887793; }
+.chat-message p { margin-top:8px; font-size:14px; line-height:1.75; white-space:pre-wrap; overflow-wrap:anywhere; }
+.chat-event { align-self:center; width:100%; background:#fff; border:1px dashed #dfd4e8; }
+.chat-event strong { color:#8050b5; }
+.chat-event p { font-size:12px; color:#756580; }
+.load-messages { color:#8050b5; font-size:13px; padding:10px; }
+.message-composer { display:grid; gap:12px; padding:22px; border-top:1px solid #eee7f4; }
+.message-composer textarea { min-height:100px; font-size:15px; resize:vertical; }
+.message-composer>div { display:flex; align-items:center; gap:15px; justify-content:space-between; }
+.message-composer>div>span { color:#887793; font-size:11px; line-height:1.5; }
+.contract-content { padding:24px; display:grid; gap:22px; }
+.contract-summary>span { font-size:11px; font-weight:600; letter-spacing:1px; color:#8050b5; }
+.contract-summary h3 { margin-block:9px; font-size:21px; line-height:1.4; overflow-wrap:anywhere; }
+.contract-total { display:block; font-size:27px; letter-spacing:-.6px; }
+.contract-total small { font-size:12px; color:#887793; font-weight:500; letter-spacing:0; }
+.contract-summary>p { font-size:11px; color:#887793; margin-top:9px; }
+.contract-empty h3,.contract-form h3,.delivery-card h3,.collaboration-reviews>h3 { font-size:19px; font-weight:600; }
+.contract-empty p,.contract-form>p,.milestone-editor>p { color:#756580; font-size:14px; line-height:1.75; margin-top:10px; }
+.contract-terms { font-size:14px; border-block:1px solid #eee7f4; padding-block:16px; }
+.contract-terms summary { font-weight:600; cursor:pointer; color:#8050b5; }
+.contract-terms h4 { font-weight:600; margin-top:18px; }
+.contract-terms p { color:#756580; white-space:pre-wrap; overflow-wrap:anywhere; line-height:1.8; margin-top:5px; }
+.contract-milestones { display:grid; gap:12px; }
+.contract-milestones li { display:flex; gap:12px; border:1px solid #e8e0ef; border-radius:10px; padding:16px; }
+.contract-milestones li.current { border-color:#aa80d0; background:#fcfaff; }
+.milestone-number { width:25px; height:25px; border-radius:50%; background:#f3ecfb; color:#8050b5; display:grid; place-items:center; flex-shrink:0; font-size:12px; }
+.approved .milestone-number { color:#426650; background:#eff8f2; }
+.contract-milestones h4 { font-weight:600; font-size:14px; overflow-wrap:anywhere; }
+.contract-milestones p { font-size:12px; color:#81728c; margin-top:6px; }
+.contract-milestones li>div>span { display:block; margin-top:7px; color:#8050b5; font-size:11px; }
+.payment-note,.next-step-note { font-size:12px; color:#81728c; line-height:1.8; }
+.payment-note { background:#f8f5fb; padding:14px; border-radius:8px; }
+.collaboration-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.collaboration-actions .button { font-size:13px; min-height:42px; padding-inline:15px; }
+.contract-form { display:grid; gap:17px; min-width:0; padding-top:20px; border-top:1px solid #eee7f4; }
+.contract-form .account-section-heading { margin-bottom:0; }
+.contract-form .form-field { min-width:0; }
+.contract-form .editor-field-row { grid-template-columns:1fr 1fr; gap:12px; }
+.contract-form input,.contract-form textarea { font-size:14px; min-width:0; }
+.contract-form textarea { min-height:105px; resize:vertical; }
+.contract-form>p { margin-top:0; }
+.milestone-editor h4 { font-weight:600; font-size:15px; }
+.milestone-editor>p { margin-block:8px 15px; font-size:12px; }
+.milestone-edit { padding:16px; border:1px solid #e8e0ef; border-radius:12px; display:grid; gap:16px; margin-bottom:14px; background:#fcfaff; }
+.milestone-edit strong { font-size:13px; }
+.delivery-card { border:1px solid #d3e7d9; background:#f5faf6; border-radius:12px; padding:20px; }
+.delivery-card p { font-size:14px; color:#5d7465; white-space:pre-wrap; overflow-wrap:anywhere; margin-block:12px; line-height:1.75; }
+.delivery-card a { font-size:14px; font-weight:600; color:#426650; display:inline-flex; align-items:center; gap:8px; }
+.rating-options { display:flex; flex-wrap:wrap; gap:15px; }
+.rating-options>div,.rating-options label { display:flex; align-items:center; gap:5px; }
+.rating-options label { cursor:pointer; }
+.rating-options svg,.review-card svg { color:#ae8031; }
+.review-card { border:1px solid #e8e0ef; border-radius:10px; padding:17px; margin-top:14px; }
+.review-card strong { display:flex; align-items:center; gap:6px; font-size:14px; }
+.review-card p { font-size:14px; white-space:pre-wrap; overflow-wrap:anywhere; line-height:1.8; color:#756580; margin-top:8px; }
+.collaboration-reviews { display:grid; gap:10px; }
+.collaboration-reviews>p { color:#81728c; font-size:13px; line-height:1.7; }
+.cancellation-note,.connection-error { background:#fff6e8; color:#7e602e; border-radius:10px; padding:16px; font-size:13px; line-height:1.7; }
+.connection-error { margin-bottom:20px; }
+.connection-error button { text-decoration:underline; margin-left:12px; }
+.collaboration-error { margin-bottom:20px; }
+@media(max-width:1000px) { .collaboration-grid { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:18px; } .panel-heading>span { display:none; } .collaboration-steps li { padding:14px 10px; gap:7px; font-size:12px; } .contract-content { padding:18px; } .contract-form .editor-field-row { grid-template-columns:1fr; } }
+@media(max-width:760px) { .collaboration-grid { grid-template-columns:minmax(0,1fr); } .message-history { max-height:420px; } .collaboration-row { padding:18px; gap:13px; flex-wrap:wrap; } .collaboration-row h2 { font-size:17px; } .collaboration-row>svg { display:none; } .collaboration-row .publication-badge { margin-left:63px; } .collaboration-steps li { flex-direction:column; text-align:center; font-size:11px; padding:12px 5px; } .contract-form .editor-field-row { grid-template-columns:1fr 1fr; } .marketplace-header nav { gap:12px; } }
+@media(max-width:480px) { .marketplace-header nav { margin-left:auto; font-size:12px; } .marketplace-header .account-nav { width:100%; justify-content:flex-end; } .contract-form .editor-field-row { grid-template-columns:1fr; } .message-history,.message-composer,.panel-heading { padding:17px; } }

@@ -14,8 +14,12 @@ const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
 const managedLinux = readExecutionProfile() === "managed-linux";
 
 const localBindingConfig = {
-  main: "vinext/server/fetch-handler",
+  main: "./worker/index.ts",
   compatibility_flags: ["nodejs_compat"],
+  durable_objects: {
+    bindings: [{ name: "COLLABORATION_ROOMS", class_name: "CollaborationRoom" }],
+  },
+  migrations: [{ tag: "collaboration-rooms-v1", new_sqlite_classes: ["CollaborationRoom"] }],
   d1_databases: d1
     ? [
         {
@@ -52,7 +56,7 @@ export default defineConfig(async () => {
 
   return {
     server: {
-      ...(managedLinux ? { host: "0.0.0.0", allowedHosts: ["terminal.local"] } : {}),
+      ...(managedLinux ? { host: "0.0.0.0", allowedHosts: ["terminal.local","full-moons-chew.loca.lt"] } : {}),
       ...(isCodexSeatbeltSandbox ? { watch: { useFsEvents: false, usePolling: true } } : {}),
     },
     plugins: [

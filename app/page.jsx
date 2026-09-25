@@ -1,5 +1,6 @@
 import LandingPage from '@/components/endorse/landing-page';
 
-export default function Home() {
-  return <LandingPage />;
+export default async function Home({ searchParams }) {
+  const { audience } = await searchParams;
+  return <LandingPage initialTab={audience === 'creators' ? 'companies' : 'creators'} />;
 }
